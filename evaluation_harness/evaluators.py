@@ -2,12 +2,13 @@
 # answer string match
 import collections
 import html
-import importlib
 import json
+import re
 import time
 import urllib
+from decimal import Decimal, InvalidOperation
 from pathlib import Path
-from typing import Any, Tuple, Union
+from typing import Union
 
 from beartype import beartype
 from nltk.tokenize import word_tokenize
@@ -17,13 +18,8 @@ from browser_env.actions import Action
 from browser_env.utils import StateInfo
 from evaluation_harness.helper_functions import (
     PseudoPage,
-    gitlab_get_project_memeber_role,
     llm_fuzzy_match,
     llm_ua_match,
-    reddit_get_post_url,
-    shopping_get_latest_order_url,
-    shopping_get_sku_latest_review_author,
-    shopping_get_sku_latest_review_rating,
 )
 
 Trajectory = list[Union[Action, StateInfo]]
@@ -105,6 +101,19 @@ class StringEvaluator(Evaluator):
             and len(clean_ref) == 1
             and len(word_tokenize(clean_ref)) == 1
         ):
+            try:
+                ref_number = Decimal(clean_ref)
+            except InvalidOperation:
+                ref_number = None
+            if ref_number is not None:
+                for match in re.finditer(
+                    r"(?<![\w.])-?\$?\d+(?:\.\d+)?(?![\w.])",
+                    clean_pred,
+                ):
+                    pred_number = Decimal(match.group().replace("$", ""))
+                    if pred_number == ref_number:
+                        return 1.0
+                return 0.0
             tok_pred = word_tokenize(clean_pred)
             return float(clean_ref in tok_pred)
         else:
