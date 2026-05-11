@@ -1,7 +1,6 @@
-import json
 import re
 from collections import defaultdict
-from typing import Any, TypedDict, Union
+from typing import Any, TypedDict
 
 import numpy as np
 import numpy.typing as npt
@@ -136,7 +135,7 @@ class TextObervationProcessor(ObservationProcessor):
                 },
             )
             return response
-        except Exception as e:
+        except Exception:
             return {"result": {"subtype": "error"}}
 
     @staticmethod
@@ -167,8 +166,11 @@ class TextObervationProcessor(ObservationProcessor):
             - max(elem_top_bound, win_top_bound),
         )
 
-        # Compute the overlap area
-        ratio = overlap_width * overlap_height / width * height
+        if width <= 0 or height <= 0:
+            return 0.0
+
+        # Compute the fraction of the element's area that is in the viewport.
+        ratio = overlap_width * overlap_height / (width * height)
         return ratio
 
     def fetch_page_html(
@@ -346,7 +348,7 @@ class TextObervationProcessor(ObservationProcessor):
                     }
                     tree_str += f"{indent}{node_str}\n"
 
-            except Exception as e:
+            except Exception:
                 valid_node = False
 
             for child_ids in node["childIds"]:
@@ -536,7 +538,7 @@ class TextObervationProcessor(ObservationProcessor):
                         "text": node_str,
                     }
 
-            except Exception as e:
+            except Exception:
                 valid_node = False
 
             for _, child_node_id in enumerate(node["childIds"]):
@@ -659,7 +661,7 @@ class ImageObservationProcessor(ObservationProcessor):
     def process(self, page: Page, client: CDPSession) -> npt.NDArray[np.uint8]:
         try:
             screenshot = png_bytes_to_numpy(page.screenshot())
-        except:
+        except Exception:
             page.wait_for_event("load")
             screenshot = png_bytes_to_numpy(page.screenshot())
         return screenshot
