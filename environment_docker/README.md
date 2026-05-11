@@ -181,6 +181,10 @@ docker exec forum sh -c 'echo "session.name = REDDITSESSID" > /usr/local/etc/php
 docker restart forum
 ```
 
+This `docker exec` override is written inside the running container. Repeat the
+command after recreating the forum container, or bake the same PHP override into
+your local image if you rebuild it.
+
 
 ### Gitlab Website
 
