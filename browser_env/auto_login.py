@@ -19,6 +19,7 @@ from browser_env.env_config import (
 
 HEADLESS = True
 SLOW_MO = 0
+CHROMIUM_ARGS = ["--ignore-certificate-errors"]
 
 
 SITES = ["gitlab", "shopping", "shopping_admin", "reddit"]
@@ -41,8 +42,12 @@ def is_expired(
 
     context_manager = sync_playwright()
     playwright = context_manager.__enter__()
-    browser = playwright.chromium.launch(headless=True, slow_mo=SLOW_MO)
-    context = browser.new_context(storage_state=storage_state)
+    browser = playwright.chromium.launch(
+        headless=True, slow_mo=SLOW_MO, args=CHROMIUM_ARGS
+    )
+    context = browser.new_context(
+        storage_state=storage_state, ignore_https_errors=True
+    )
     page = context.new_page()
     page.goto(url)
     time.sleep(1)
@@ -61,8 +66,10 @@ def is_expired(
 def renew_comb(comb: list[str], auth_folder: str = "./.auth") -> None:
     context_manager = sync_playwright()
     playwright = context_manager.__enter__()
-    browser = playwright.chromium.launch(headless=HEADLESS)
-    context = browser.new_context()
+    browser = playwright.chromium.launch(
+        headless=HEADLESS, args=CHROMIUM_ARGS
+    )
+    context = browser.new_context(ignore_https_errors=True)
     page = context.new_page()
 
     if "shopping" in comb:
