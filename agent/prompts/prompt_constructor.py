@@ -3,7 +3,7 @@ import re
 from pathlib import Path
 from typing import Any, TypedDict
 
-from browser_env import Action, ActionParsingError, Trajectory
+from browser_env import ActionParsingError, Trajectory
 from browser_env.env_config import URL_MAPPINGS
 from browser_env.utils import StateInfo
 from llms import lm_config
@@ -103,8 +103,10 @@ class PromptConstructor(object):
                 else:
                     raise ValueError("Only chat mode is supported for Llama-2")
             else:
+                model_tag = self.lm_config.gen_config.get("model_tag", self.lm_config.model)
                 raise ValueError(
-                    f"Huggingface models do not support model_tag {self.lm_config.gen_config['model_tag']}"
+                    "Huggingface models only support Llama-2 chat prompts in "
+                    f"this prompt constructor, got model_tag {model_tag}"
                 )
         else:
             raise NotImplementedError(
@@ -187,7 +189,7 @@ class DirectPromptConstructor(PromptConstructor):
         )
 
         # make sure all keywords are replaced
-        assert all([f"{{k}}" not in current for k in keywords])
+        assert all(["{k}" not in current for k in keywords])
         prompt = self.get_lm_api_input(intro, examples, current)
         return prompt
 
@@ -242,7 +244,7 @@ class CoTPromptConstructor(PromptConstructor):
             previous_action=previous_action_str,
         )
 
-        assert all([f"{{k}}" not in current for k in keywords])
+        assert all(["{k}" not in current for k in keywords])
 
         prompt = self.get_lm_api_input(intro, examples, current)
         return prompt
