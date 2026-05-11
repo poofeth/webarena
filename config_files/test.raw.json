@@ -3015,11 +3015,11 @@
     "storage_state": "./.auth/shopping_admin_state.json",
     "start_url": "__SHOPPING_ADMIN__",
     "geolocation": null,
-    "intent_template": "Telll me the grand total of invoice {{id}}.",
+    "intent_template": "Tell me the grand total of invoice {{id}}.",
     "instantiation_dict": {
       "id": "000000001"
     },
-    "intent": "Telll me the grand total of invoice 000000001.",
+    "intent": "Tell me the grand total of invoice 000000001.",
     "require_reset": false,
     "eval": {
       "eval_types": [
@@ -3046,11 +3046,11 @@
     "storage_state": "./.auth/shopping_admin_state.json",
     "start_url": "__SHOPPING_ADMIN__",
     "geolocation": null,
-    "intent_template": "Telll me the grand total of invoice {{id}}.",
+    "intent_template": "Tell me the grand total of invoice {{id}}.",
     "instantiation_dict": {
       "id": "000000002"
     },
-    "intent": "Telll me the grand total of invoice 000000002.",
+    "intent": "Tell me the grand total of invoice 000000002.",
     "require_reset": false,
     "eval": {
       "eval_types": [
@@ -6426,9 +6426,9 @@
     "intent_template": "Get the {{attribute}} of the {{status}} order",
     "instantiation_dict": {
       "attribute": "date",
-      "status": "most recent canlled"
+      "status": "most recent cancelled"
     },
-    "intent": "Get the date of the most recent canlled order",
+    "intent": "Get the date of the most recent cancelled order",
     "require_reset": false,
     "eval": {
       "eval_types": [
@@ -9960,11 +9960,11 @@
     "storage_state": "./.auth/shopping_state.json",
     "start_url": "__SHOPPING__",
     "geolocation": null,
-    "intent_template": "How much refund I should expect from my order canlled in {{time}}, including shipping fee",
+    "intent_template": "How much refund I should expect from my order cancelled in {{time}}, including shipping fee",
     "instantiation_dict": {
       "time": "April 2022"
     },
-    "intent": "How much refund I should expect from my order canlled in April 2022, including shipping fee",
+    "intent": "How much refund I should expect from my order cancelled in April 2022, including shipping fee",
     "require_reset": false,
     "eval": {
       "eval_types": [
@@ -9991,11 +9991,11 @@
     "storage_state": "./.auth/shopping_state.json",
     "start_url": "__SHOPPING__",
     "geolocation": null,
-    "intent_template": "How much refund I should expect from my order canlled in {{time}}, including shipping fee",
+    "intent_template": "How much refund I should expect from my order cancelled in {{time}}, including shipping fee",
     "instantiation_dict": {
       "time": "Feb 2023"
     },
-    "intent": "How much refund I should expect from my order canlled in Feb 2023, including shipping fee",
+    "intent": "How much refund I should expect from my order cancelled in Feb 2023, including shipping fee",
     "require_reset": false,
     "eval": {
       "eval_types": [
@@ -10022,11 +10022,11 @@
     "storage_state": "./.auth/shopping_state.json",
     "start_url": "__SHOPPING__",
     "geolocation": null,
-    "intent_template": "How much refund I should expect from my order canlled in {{time}}, including shipping fee",
+    "intent_template": "How much refund I should expect from my order cancelled in {{time}}, including shipping fee",
     "instantiation_dict": {
       "time": "2022"
     },
-    "intent": "How much refund I should expect from my order canlled in 2022, including shipping fee",
+    "intent": "How much refund I should expect from my order cancelled in 2022, including shipping fee",
     "require_reset": false,
     "eval": {
       "eval_types": [
@@ -10053,11 +10053,11 @@
     "storage_state": "./.auth/shopping_state.json",
     "start_url": "__SHOPPING__",
     "geolocation": null,
-    "intent_template": "How much refund I should expect from my order canlled in {{time}} if I cannot get the shipping fee refunded?",
+    "intent_template": "How much refund I should expect from my order cancelled in {{time}} if I cannot get the shipping fee refunded?",
     "instantiation_dict": {
       "time": "May 2023"
     },
-    "intent": "How much refund I should expect from my order canlled in May 2023 if I cannot get the shipping fee refunded?",
+    "intent": "How much refund I should expect from my order cancelled in May 2023 if I cannot get the shipping fee refunded?",
     "require_reset": false,
     "eval": {
       "eval_types": [
@@ -10084,11 +10084,11 @@
     "storage_state": "./.auth/shopping_state.json",
     "start_url": "__SHOPPING__",
     "geolocation": null,
-    "intent_template": "How much refund I should expect from my order canlled in {{time}}? I only kept the AC-DC Adapter and the shop told me that I cannot get the shipping fee back",
+    "intent_template": "How much refund I should expect from my order cancelled in {{time}}? I only kept the AC-DC Adapter and the shop told me that I cannot get the shipping fee back",
     "instantiation_dict": {
       "time": "2022/03"
     },
-    "intent": "How much refund I should expect from my order canlled in 2022/03? I only kept the AC-DC Adapter and the shop told me that I cannot get the shipping fee back",
+    "intent": "How much refund I should expect from my order cancelled in 2022/03? I only kept the AC-DC Adapter and the shop told me that I cannot get the shipping fee back",
     "require_reset": false,
     "eval": {
       "eval_types": [
@@ -21841,11 +21841,11 @@
     "storage_state": "./.auth/reddit_state.json",
     "start_url": "__REDDIT__",
     "geolocation": null,
-    "intent_template": "Post in {{subreddit}} subreddit about what could machine learning help the correpong field.",
+    "intent_template": "Post in {{subreddit}} subreddit about what could machine learning help the corresponding field.",
     "instantiation_dict": {
       "subreddit": "books"
     },
-    "intent": "Post in books subreddit about what could machine learning help the correpong field.",
+    "intent": "Post in books subreddit about what could machine learning help the corresponding field.",
     "require_reset": false,
     "eval": {
       "eval_types": [
@@ -21879,11 +21879,11 @@
     "storage_state": "./.auth/reddit_state.json",
     "start_url": "__REDDIT__",
     "geolocation": null,
-    "intent_template": "Post in {{subreddit}} subreddit about what could midjourney help the correpong field.",
+    "intent_template": "Post in {{subreddit}} subreddit about what could midjourney help the corresponding field.",
     "instantiation_dict": {
       "subreddit": "DIY"
     },
-    "intent": "Post in DIY subreddit about what could midjourney help the correpong field.",
+    "intent": "Post in DIY subreddit about what could midjourney help the corresponding field.",
     "require_reset": false,
     "eval": {
       "eval_types": [
@@ -21917,11 +21917,11 @@
     "storage_state": "./.auth/reddit_state.json",
     "start_url": "__REDDIT__",
     "geolocation": null,
-    "intent_template": "Post in {{subreddit}} forum about what could open-source LLMs help the correpong field.",
+    "intent_template": "Post in {{subreddit}} forum about what could open-source LLMs help the corresponding field.",
     "instantiation_dict": {
       "subreddit": "technology"
     },
-    "intent": "Post in technology forum about what could open-source LLMs help the correpong field.",
+    "intent": "Post in technology forum about what could open-source LLMs help the corresponding field.",
     "require_reset": false,
     "eval": {
       "eval_types": [
@@ -21955,11 +21955,11 @@
     "storage_state": "./.auth/reddit_state.json",
     "start_url": "__REDDIT__",
     "geolocation": null,
-    "intent_template": "Post in {{subreddit}} forum about what could large language models help the correpong field.",
+    "intent_template": "Post in {{subreddit}} forum about what could large language models help the corresponding field.",
     "instantiation_dict": {
       "subreddit": "dataisbeautiful"
     },
-    "intent": "Post in dataisbeautiful forum about what could large language models help the correpong field.",
+    "intent": "Post in dataisbeautiful forum about what could large language models help the corresponding field.",
     "require_reset": false,
     "eval": {
       "eval_types": [
@@ -21993,11 +21993,11 @@
     "storage_state": "./.auth/reddit_state.json",
     "start_url": "__REDDIT__",
     "geolocation": null,
-    "intent_template": "Post in {{subreddit}} subreddit about what could diffusion model help the correpong field.",
+    "intent_template": "Post in {{subreddit}} subreddit about what could diffusion model help the corresponding field.",
     "instantiation_dict": {
       "subreddit": "history"
     },
-    "intent": "Post in history subreddit about what could diffusion model help the correpong field.",
+    "intent": "Post in history subreddit about what could diffusion model help the corresponding field.",
     "require_reset": false,
     "eval": {
       "eval_types": [
