@@ -98,9 +98,13 @@ curl -s -o /dev/null -w "Shopping Admin (7780): %{http_code}\n" http://$HOSTNAME
 curl -s -o /dev/null -w "Forum (9999): %{http_code}\n" http://$HOSTNAME:9999
 curl -s -o /dev/null -w "Wikipedia (8888): %{http_code}\n" http://$HOSTNAME:8888
 curl -s -o /dev/null -w "Map (3000): %{http_code}\n" http://$HOSTNAME:3000
-curl -s -o /dev/null -w "GitLab (8023): %{http_code}\n" http://$HOSTNAME:8023
+curl -s -o /dev/null -w "GitLab (8023): %{http_code}\n" http://$HOSTNAME:8023/explore
 curl -s -o /dev/null -w "Map tile: %{http_code}\n" http://$HOSTNAME:3000/tile/0/0/0.png
 ```
+
+GitLab may redirect requests to `http://<your-server-hostname>:8023/`, so the
+health check uses `/explore`, which is the page you should visit after the
+container finishes booting.
 
 You should be able to access your environment websites now, and stop reading.
 However, if you are unable to use AWS AMI, read below to set up on your own machine.
