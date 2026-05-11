@@ -1,5 +1,5 @@
 # Docker for WebArena Websites
-This REAME file host the instructions for our Docker images and quick start guide for starting up websites used in WebArena.
+This README file hosts the instructions for our Docker images and quick start guide for starting up websites used in WebArena.
 
 # Table of Content
 - [Pre-installed Amazon Machine Image (Recommended)](#pre-installed-amazon-machine-image-recommended)
@@ -120,7 +120,10 @@ docker run --name forum -p 9999:80 -d postmill-populated-exposed-withimg
 ```
 
 ## Individual Website
-We highly recommend setting up the environments with AMI introduced above, but we also list the steps to setting up individual websites below. This allows you to setup selected websites locally.
+We highly recommend setting up the environments with the AMI introduced above, but we also list the steps to set up individual websites below. This allows you to set up selected websites locally.
+
+> [!NOTE]
+> Most individual websites have standalone Docker/image instructions below. The Map stack is the exception: there is no standalone map Docker image in this repository today. For map tasks, use the pre-installed WebArena AMI or connect the WebArena map frontend to a separately provisioned map backend as described in the [Map](#map) section. If you are running a partial non-AMI environment, exclude tasks whose `sites` include `map` from your evaluation split.
 
 
 ### Shopping Website (OneStopShop)
@@ -229,6 +232,13 @@ The homepage will be available at `http://<your-server-hostname>:4399`.
 ### Map
 
 The WebArena AMI automatically configures the map frontend to use your specified map backend server when you set `MAP_BACKEND_IP=YOUR_MAP_BACKEND_IP` in the user data (as shown in step 3 above). No manual configuration is required.
+
+Unlike the shopping, forum, GitLab, Wikipedia, and homepage services above, WebArena does not currently provide a single standalone Docker image for the full map stack. Running map tasks outside the pre-installed AMI requires both:
+
+- a WebArena map frontend, such as the one included in the AMI, configured with `MAP_BACKEND_IP`
+- a separately provisioned map backend that serves tiles, geocoding, and routing
+
+For non-AMI or local-only runs that do not provision this backend, skip task configs whose `sites` field contains `"map"`.
 
 #### Setting up your own map backend
 
