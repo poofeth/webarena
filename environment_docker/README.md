@@ -122,6 +122,9 @@ docker run --name forum -p 9999:80 -d postmill-populated-exposed-withimg
 ## Individual Website
 We highly recommend setting up the environments with AMI introduced above, but we also list the steps to setting up individual websites below. This allows you to setup selected websites locally.
 
+> [!IMPORTANT]
+> Use the image tar links listed in this README as the supported sources for the WebArena website images. Docker Hub images under the `webarenaimages` namespace are not uploaded or maintained by the WebArena maintainers and should not be treated as official or latest.
+
 
 ### Shopping Website (OneStopShop)
 
