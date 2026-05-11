@@ -174,6 +174,13 @@ docker run --name forum -p 9999:80 -d postmill-populated-exposed-withimg
 ```
 Now you can visit `http://<your-server-hostname>:9999/`.
 
+If you manually browse the shopping site and forum from the same hostname, both PHP applications may use the default `PHPSESSID` cookie name and overwrite each other's login session. Agent evaluation usually uses isolated storage states, but manual browser sessions can avoid the conflict by giving the forum a distinct PHP session name:
+
+```bash
+docker exec forum sh -c 'echo "session.name = REDDITSESSID" > /usr/local/etc/php/conf.d/zz-overrides.ini'
+docker restart forum
+```
+
 
 ### Gitlab Website
 
