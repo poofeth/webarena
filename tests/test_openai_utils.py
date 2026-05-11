@@ -51,6 +51,32 @@ def test_gpt5_chat_completion_omits_custom_temperature(
     )
 
     assert "temperature" not in calls[0]
+    assert "top_p" not in calls[0]
+
+
+def test_gpt5_chat_completion_keeps_non_default_top_p(
+    monkeypatch: pytest.MonkeyPatch,
+) -> None:
+    calls = []
+
+    def fake_create(**kwargs):
+        calls.append(kwargs)
+        return {"choices": [{"message": {"content": "same"}}]}
+
+    monkeypatch.setenv("OPENAI_API_KEY", "action-key")
+    monkeypatch.setattr(openai.ChatCompletion, "create", fake_create)
+
+    openai_utils.generate_from_openai_chat_completion(
+        messages=[{"role": "user", "content": "hello"}],
+        model="gpt-5-mini",
+        temperature=0,
+        max_tokens=16,
+        top_p=0.5,
+        context_length=0,
+    )
+
+    assert "temperature" not in calls[0]
+    assert calls[0]["top_p"] == 0.5
 
 
 def test_eval_chat_completion_falls_back_to_default_key(

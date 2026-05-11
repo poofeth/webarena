@@ -77,10 +77,13 @@ def _chat_completion_kwargs(
         "model": model,
         "messages": messages,
         "max_tokens": max_tokens,
-        "top_p": top_p,
     }
-    if _supports_custom_temperature(model):
+    supports_sampling_overrides = _supports_custom_temperature(model)
+    if supports_sampling_overrides:
         kwargs["temperature"] = temperature
+        kwargs["top_p"] = top_p
+    elif top_p != 1.0:
+        kwargs["top_p"] = top_p
     if stop_token:
         kwargs["stop"] = [stop_token]
     return kwargs
