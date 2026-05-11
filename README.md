@@ -106,6 +106,10 @@ mkdir -p ./.auth
 python browser_env/auto_login.py
 ```
 5. export `OPENAI_API_KEY=your_key`, a valid OpenAI API key starts with `sk-`
+   The LLM-based evaluators use the same key by default. To run the evaluator
+   against a different OpenAI-compatible endpoint or model, set
+   `WEBARENA_EVAL_OPENAI_API_KEY`, `WEBARENA_EVAL_OPENAI_API_BASE`, and
+   `WEBARENA_EVAL_MODEL`.
 
 6. Launch the evaluation
 ```bash
